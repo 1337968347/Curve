@@ -1,5 +1,5 @@
-import { Component, Element, h } from '@stencil/core';
-import { makeHermiteLines } from '../../helpers/curve';
+import { Component, Element, State, h } from '@stencil/core';
+import { getCurvePoints, HERMITE_MATRIX } from '../../helpers/curve';
 
 @Component({
   tag: 'app-root',
@@ -7,8 +7,19 @@ import { makeHermiteLines } from '../../helpers/curve';
 })
 export class AppRoot {
   @Element() el: HTMLElement;
-  componentDidLoad() {
-    const canvasEl = this.el.querySelector('canvas');
+  @State() hermitePoints: Array<Array<number>> = [];
+
+  componentWillLoad() {
+    const N = 20;
+
+    const p = [
+      [-200, 200],
+      [200, -200],
+      [200, 200],
+      [150, 400],
+    ];
+
+    this.hermitePoints = getCurvePoints(HERMITE_MATRIX, N, p);
   }
 
   render() {
@@ -20,7 +31,7 @@ export class AppRoot {
           </ion-toolbar>
         </ion-header>
         <ion-content class="ion-padding">
-          <canvas></canvas>
+          <cy-coordinate points={this.hermitePoints} />
         </ion-content>
       </ion-app>
     );

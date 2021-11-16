@@ -8,6 +8,9 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
     interface AppRoot {
     }
+    interface CyCoordinate {
+        "points": Array<Array<number>>;
+    }
 }
 declare global {
     interface HTMLAppRootElement extends Components.AppRoot, HTMLStencilElement {
@@ -16,15 +19,26 @@ declare global {
         prototype: HTMLAppRootElement;
         new (): HTMLAppRootElement;
     };
+    interface HTMLCyCoordinateElement extends Components.CyCoordinate, HTMLStencilElement {
+    }
+    var HTMLCyCoordinateElement: {
+        prototype: HTMLCyCoordinateElement;
+        new (): HTMLCyCoordinateElement;
+    };
     interface HTMLElementTagNameMap {
         "app-root": HTMLAppRootElement;
+        "cy-coordinate": HTMLCyCoordinateElement;
     }
 }
 declare namespace LocalJSX {
     interface AppRoot {
     }
+    interface CyCoordinate {
+        "points"?: Array<Array<number>>;
+    }
     interface IntrinsicElements {
         "app-root": AppRoot;
+        "cy-coordinate": CyCoordinate;
     }
 }
 export { LocalJSX as JSX };
@@ -32,6 +46,7 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "app-root": LocalJSX.AppRoot & JSXBase.HTMLAttributes<HTMLAppRootElement>;
+            "cy-coordinate": LocalJSX.CyCoordinate & JSXBase.HTMLAttributes<HTMLCyCoordinateElement>;
         }
     }
 }
