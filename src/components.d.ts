@@ -9,7 +9,10 @@ export namespace Components {
     interface AppRoot {
     }
     interface CyCoordinate {
+        "controlPoints": Array<Array<number>>;
+        "height": number;
         "points": Array<Array<number>>;
+        "width": number;
     }
 }
 declare global {
@@ -34,7 +37,10 @@ declare namespace LocalJSX {
     interface AppRoot {
     }
     interface CyCoordinate {
+        "controlPoints"?: Array<Array<number>>;
+        "height"?: number;
         "points"?: Array<Array<number>>;
+        "width"?: number;
     }
     interface IntrinsicElements {
         "app-root": AppRoot;

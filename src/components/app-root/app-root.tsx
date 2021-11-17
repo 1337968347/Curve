@@ -8,18 +8,19 @@ import { getCurvePoints, HERMITE_MATRIX } from '../../helpers/curve';
 export class AppRoot {
   @Element() el: HTMLElement;
   @State() hermitePoints: Array<Array<number>> = [];
+  @State() hermiteControlPoints: Array<Array<number>> = [];
 
   componentWillLoad() {
-    const N = 20;
+    const N = 30;
 
-    const p = [
+    this.hermiteControlPoints = [
       [-200, 200],
-      [200, -200],
+      [200, -100],
       [200, 200],
-      [150, 400],
+      [150, -200],
     ];
 
-    this.hermitePoints = getCurvePoints(HERMITE_MATRIX, N, p);
+    this.hermitePoints = getCurvePoints(HERMITE_MATRIX, N, this.hermiteControlPoints);
   }
 
   render() {
@@ -31,7 +32,7 @@ export class AppRoot {
           </ion-toolbar>
         </ion-header>
         <ion-content class="ion-padding">
-          <cy-coordinate points={this.hermitePoints} />
+          <cy-coordinate points={this.hermitePoints} controlPoints={this.hermiteControlPoints} width={500} height={500} />
         </ion-content>
       </ion-app>
     );
