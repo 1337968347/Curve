@@ -18,7 +18,7 @@ export class AppRoot {
    * Hermite曲线
    */
   makeHermiteCurve() {
-    const N = 40;
+    const N = 5;
     const controlPoints = [
       [-200, 200],
       [200, -100],
@@ -40,7 +40,7 @@ export class AppRoot {
    * 贝塞尔曲线
    */
   makeBezierCurve() {
-    const N = 50;
+    const N = 5;
     const controlPoints = [
       [0, 0],
       [0, 200],
