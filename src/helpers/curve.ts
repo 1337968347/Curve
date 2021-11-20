@@ -13,6 +13,19 @@ export const HERMITE_MATRIX = mat4.create(new Float32Array(
     ]
 ))
 
+/**
+ * 贝塞尔矩阵
+ */
+// prettier-ignore
+export const BEZIER_MATRIX = mat4.create(new Float32Array(
+  [
+      1,  0,  0,  0,
+      -3, 3,  0,  0,
+      3,  -6, 3,  0,
+      -1, 3,  -3, 1
+  ]
+))
+
 const getU = u => {
   return new Float32Array([1, u, u * u, u * u * u]);
 };
@@ -37,7 +50,7 @@ export const getCurvePoints = (matrix: Float32Array, N: number, controlPoints: A
   if (controlPoints.length !== harmonicVec4.length) throw '插值点错误';
 
   let d = 1 / N;
-  for (let i = 0; i < N; i++) {
+  for (let i = 0; i <= N; i++) {
     const u = i * d;
     const uVec4 = getU(u);
     mat4.multiplyVec4(matrix, uVec4, harmonicVec4);

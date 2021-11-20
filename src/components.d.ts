@@ -9,9 +9,10 @@ export namespace Components {
     interface AppRoot {
     }
     interface CyCoordinate {
-        "controlPoints": Array<Array<number>>;
+        "curveTitle": string;
         "height": number;
-        "points": Array<Array<number>>;
+        "setControlPoints": (controlPoints?: Array<Array<number>>) => Promise<void>;
+        "setPoints": (points?: Array<Array<number>>) => Promise<void>;
         "width": number;
     }
 }
@@ -37,9 +38,8 @@ declare namespace LocalJSX {
     interface AppRoot {
     }
     interface CyCoordinate {
-        "controlPoints"?: Array<Array<number>>;
+        "curveTitle"?: string;
         "height"?: number;
-        "points"?: Array<Array<number>>;
         "width"?: number;
     }
     interface IntrinsicElements {

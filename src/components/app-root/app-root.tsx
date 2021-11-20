@@ -1,5 +1,5 @@
-import { Component, Element, State, h } from '@stencil/core';
-import { getCurvePoints, HERMITE_MATRIX } from '../../helpers/curve';
+import { Component, Element, h } from '@stencil/core';
+import { getCurvePoints, HERMITE_MATRIX, BEZIER_MATRIX } from '../../helpers/curve';
 
 @Component({
   tag: 'app-root',
@@ -7,20 +7,55 @@ import { getCurvePoints, HERMITE_MATRIX } from '../../helpers/curve';
 })
 export class AppRoot {
   @Element() el: HTMLElement;
-  @State() hermitePoints: Array<Array<number>> = [];
-  @State() hermiteControlPoints: Array<Array<number>> = [];
 
-  componentWillLoad() {
-    const N = 30;
+  componentDidLoad() {
+    document.querySelector('ion-content').innerHTML = '';
+    this.makeHermiteCurve();
+    this.makeBezierCurve();
+  }
 
-    this.hermiteControlPoints = [
+  /**
+   * Hermite曲线
+   */
+  makeHermiteCurve() {
+    const N = 40;
+    const controlPoints = [
       [-200, 200],
       [200, -100],
       [200, 200],
-      [150, -200],
+      [-150, -200],
     ];
 
-    this.hermitePoints = getCurvePoints(HERMITE_MATRIX, N, this.hermiteControlPoints);
+    const points = getCurvePoints(HERMITE_MATRIX, N, controlPoints);
+    const coordinateEl = document.createElement('cy-coordinate');
+    coordinateEl.width = 600;
+    coordinateEl.height = 600;
+    coordinateEl.curveTitle = 'Hermite 曲线';
+    coordinateEl.setControlPoints(controlPoints);
+    coordinateEl.setPoints(points);
+    document.querySelector('ion-content').appendChild(coordinateEl);
+  }
+
+  /**
+   * 贝塞尔曲线
+   */
+  makeBezierCurve() {
+    const N = 50;
+    const controlPoints = [
+      [0, 0],
+      [0, 200],
+      [200, 0],
+      [200, 200],
+    ];
+
+    const points = getCurvePoints(BEZIER_MATRIX, N, controlPoints);
+    const coordinateEl = document.createElement('cy-coordinate');
+    coordinateEl.width = 600;
+    coordinateEl.height = 600;
+    coordinateEl.curveTitle = '贝塞尔 曲线';
+    coordinateEl.setControlPoints(controlPoints);
+    coordinateEl.setPoints(points);
+    document.querySelector('ion-content').appendChild(coordinateEl);
   }
 
   render() {
@@ -31,9 +66,7 @@ export class AppRoot {
             <ion-title>曲线</ion-title>
           </ion-toolbar>
         </ion-header>
-        <ion-content class="ion-padding">
-          <cy-coordinate points={this.hermitePoints} controlPoints={this.hermiteControlPoints} width={500} height={500} />
-        </ion-content>
+        <ion-content class="ion-padding"></ion-content>
       </ion-app>
     );
   }

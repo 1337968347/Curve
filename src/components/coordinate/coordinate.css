@@ -1,0 +1,10 @@
+cy-coordinate {
+  display: inline-block;
+  margin: 5px;
+}
+
+.curve-box {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+}
