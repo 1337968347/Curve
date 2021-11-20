@@ -1,5 +1,6 @@
 import { Component, Element, h } from '@stencil/core';
 import { getCurvePoints, HERMITE_MATRIX, BEZIER_MATRIX } from '../../helpers/curve';
+import { makeDivideCurve } from '../../helpers/divideCurve';
 
 @Component({
   tag: 'app-root',
@@ -10,9 +11,17 @@ export class AppRoot {
 
   componentDidLoad() {
     document.querySelector('ion-content').innerHTML = '';
-    this.makeHermiteCurve();
-    this.makeBezierCurve();
+    // this.makeHermiteCurve();
+    // this.makeBezierCurve();
+    makeDivideCurve();
   }
+
+  /**
+   * 细分贝塞尔曲面
+   */
+  makeDivideCurve() {}
+
+  init;
 
   /**
    * Hermite曲线
@@ -61,12 +70,8 @@ export class AppRoot {
   render() {
     return (
       <ion-app>
-        <ion-header>
-          <ion-toolbar color="primary">
-            <ion-title>曲线</ion-title>
-          </ion-toolbar>
-        </ion-header>
-        <ion-content class="ion-padding"></ion-content>
+    
+        <ion-content></ion-content>
       </ion-app>
     );
   }
