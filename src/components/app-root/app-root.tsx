@@ -1,6 +1,6 @@
 import { Component, Element, h } from '@stencil/core';
 import { getCurvePoints, HERMITE_MATRIX, BEZIER_MATRIX } from '../../helpers/curve';
-import { makeDivideCurve } from '../../helpers/divideCurve';
+import { makeDivideCurve } from '../../helpers/utah';
 
 @Component({
   tag: 'app-root',
@@ -70,7 +70,6 @@ export class AppRoot {
   render() {
     return (
       <ion-app>
-    
         <ion-content></ion-content>
       </ion-app>
     );

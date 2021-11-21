@@ -635,7 +635,7 @@ export const mat4 = {
    * Returns:
    * dest is specified, mat otherwise
    */
-  transpose: function (mat, dest) {
+  transpose: function (mat, dest?) {
     // If we are transposing ourselves we can skip a few steps but have to cache some values
     if (!dest || mat == dest) {
       var a01 = mat[1],
