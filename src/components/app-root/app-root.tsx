@@ -11,17 +11,10 @@ export class AppRoot {
 
   componentDidLoad() {
     document.querySelector('ion-content').innerHTML = '';
-    // this.makeHermiteCurve();
-    // this.makeBezierCurve();
     makeDivideCurve();
+    this.makeHermiteCurve();
+    this.makeBezierCurve();
   }
-
-  /**
-   * 细分贝塞尔曲面
-   */
-  makeDivideCurve() {}
-
-  init;
 
   /**
    * Hermite曲线

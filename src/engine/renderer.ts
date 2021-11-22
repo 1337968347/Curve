@@ -78,7 +78,6 @@ export class CameraController {
 
 export default class InputHandler {
   keys: { [k: string]: boolean } = {};
-  offset: { x: number; y: number } = { x: 0, y: 0 };
   mouse: { down: boolean; x: number; y: number } = { down: false, x: 0, y: 0 };
   onClick = undefined;
   onKeyUp = undefined;
@@ -97,12 +96,10 @@ export default class InputHandler {
   bind(element: HTMLCanvasElement) {
     if (!element) return;
     this.element = element;
-    const elementRect = element.getBoundingClientRect();
-    this.offset = { x: elementRect.left, y: elementRect.top };
     // 绑定监听事件
-    document.onkeydown = (e) => this.keyDown(e.keyCode);
-    document.onkeyup = (e) => this.keyUp(e.keyCode);
-    window.onclick = (e) => {
+    document.onkeydown = e => this.keyDown(e.keyCode);
+    document.onkeyup = e => this.keyUp(e.keyCode);
+    window.onclick = e => {
       if (e.target === element) {
         focus();
       } else {
@@ -110,19 +107,19 @@ export default class InputHandler {
       }
     };
 
-    this.element.onmousedown = (e) => {
+    this.element.onmousedown = e => {
       const { x, y } = pointerCoord(e);
       this.mouseDown(x, y);
     };
-    this.element.ontouchstart = (e) => {
+    this.element.ontouchstart = e => {
       const { x, y } = pointerCoord(e);
       this.mouseDown(x, y);
     };
-    document.ontouchmove = (e) => {
+    document.ontouchmove = e => {
       const { x, y } = pointerCoord(e);
       this.mouseMove(x, y);
     };
-    document.onmousemove = (e) => {
+    document.onmousemove = e => {
       const { x, y } = pointerCoord(e);
       this.mouseMove(x, y);
     };
@@ -158,14 +155,16 @@ export default class InputHandler {
 
   mouseMove = (pageX: number, pageY: number) => {
     if (!this.mouse.down) return;
-    this.mouse.x = clamp(pageX - this.offset.x, 0, this.element.width);
-    this.mouse.y = clamp(pageY - this.offset.y, 0, this.element.height);
+    const elementRect = this.element.getBoundingClientRect();
+    this.mouse.x = clamp(pageX - elementRect.left, 0, this.element.width);
+    this.mouse.y = clamp(pageY - elementRect.top, 0, this.element.height);
   };
 
   mouseDown = (pageX: number, pageY: number) => {
     this.mouse.down = true;
-    this.mouse.x = clamp(pageX - this.offset.x, 0, this.element.width);
-    this.mouse.y = clamp(pageY - this.offset.y, 0, this.element.height);
+    const elementRect = this.element.getBoundingClientRect();
+    this.mouse.x = clamp(pageX - elementRect.left, 0, this.element.width);
+    this.mouse.y = clamp(pageY - elementRect.top, 0, this.element.height);
   };
 
   mouseUp = () => {

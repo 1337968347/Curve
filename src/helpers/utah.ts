@@ -28,7 +28,7 @@ export const makeDivideCurve = () => {
     const terrainShader = shaderManager.get('terrain');
 
     camera = new Scene.Camera();
-    camera.position = new Float32Array([0, 0, 60]);
+    camera.position = new Float32Array([0, 10, 80]);
 
     const moutainVBO = new VertexBufferObject(new Float32Array(getPointsByDivide(3)), gl);
 
@@ -50,7 +50,7 @@ export const makeDivideCurve = () => {
     renderer.setAnimationLoop(animation);
     renderer.start();
     document.querySelector('ion-content').appendChild(renderer.domElement);
-    setCanvasFullScreen(renderer.domElement, scene);
+    setCanvasFullScreen(renderer.domElement, scene, 600, 500);
 
     initModeView();
 

@@ -1,4 +1,3 @@
-import { mat4 } from '../engine/MV';
 
 export const vertexsNum = 306;
 

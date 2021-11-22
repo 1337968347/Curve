@@ -210,10 +210,10 @@ export const sampleHeight = (imgData: ImageData, u: number, v: number) => {
   return imgData.data[i] / 255;
 };
 
-export const setCanvasFullScreen = (canvas: HTMLCanvasElement, scene: Scene.Graph) => {
+export const setCanvasFullScreen = (canvas: HTMLCanvasElement, scene: Scene.Graph, width?: number, height?: number) => {
   const onResize = () => {
-    canvas.width = scene.viewport.width = window.innerWidth;
-    canvas.height = scene.viewport.height = window.innerHeight;
+    canvas.width = scene.viewport.width = width || window.innerWidth;
+    canvas.height = scene.viewport.height = height || window.innerHeight;
   };
   window.addEventListener('resize', onResize, false);
   onResize();
