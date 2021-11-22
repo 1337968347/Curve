@@ -12,8 +12,8 @@ export class AppRoot {
   componentDidLoad() {
     document.querySelector('ion-content').innerHTML = '';
     makeDivideCurve();
-    this.makeHermiteCurve();
-    this.makeBezierCurve();
+    // this.makeHermiteCurve();
+    // this.makeBezierCurve();
   }
 
   /**

@@ -1,7 +1,8 @@
+import { vec3 } from './MV';
 
 export const vertexsNum = 306;
 
-export const vertexs = [
+export const VERTEXS = [
   [1.4, 0.0, 2.4],
   [1.4, -0.784, 2.4],
   [0.784, -1.4, 2.4],
@@ -314,40 +315,40 @@ export const vertexs = [
 export const numTeapotPatches = 32;
 
 // vertexs index
-export const indices: number[][] = new Array(numTeapotPatches);
+export const INDICES: number[][] = new Array(numTeapotPatches);
 
-indices[0] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
-indices[1] = [3, 16, 17, 18, 7, 19, 20, 21, 11, 22, 23, 24, 15, 25, 26, 27];
-indices[2] = [18, 28, 29, 30, 21, 31, 32, 33, 24, 34, 35, 36, 27, 37, 38, 39];
-indices[3] = [30, 40, 41, 0, 33, 42, 43, 4, 36, 44, 45, 8, 39, 46, 47, 12];
-indices[4] = [12, 13, 14, 15, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59];
-indices[5] = [15, 25, 26, 27, 51, 60, 61, 62, 55, 63, 64, 65, 59, 66, 67, 68];
-indices[6] = [27, 37, 38, 39, 62, 69, 70, 71, 65, 72, 73, 74, 68, 75, 76, 77];
-indices[7] = [39, 46, 47, 12, 71, 78, 79, 48, 74, 80, 81, 52, 77, 82, 83, 56];
-indices[8] = [56, 57, 58, 59, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95];
-indices[9] = [59, 66, 67, 68, 87, 96, 97, 98, 91, 99, 100, 101, 95, 102, 103, 104];
-indices[10] = [68, 75, 76, 77, 98, 105, 106, 107, 101, 108, 109, 110, 104, 111, 112, 113];
-indices[11] = [77, 82, 83, 56, 107, 114, 115, 84, 110, 116, 117, 88, 113, 118, 119, 92];
-indices[12] = [120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135];
-indices[13] = [123, 136, 137, 120, 127, 138, 139, 124, 131, 140, 141, 128, 135, 142, 143, 132];
-indices[14] = [132, 133, 134, 135, 144, 145, 146, 147, 148, 149, 150, 151, 68, 152, 153, 154];
-indices[15] = [135, 142, 143, 132, 147, 155, 156, 144, 151, 157, 158, 148, 154, 159, 160, 68];
-indices[16] = [161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176];
-indices[17] = [164, 177, 178, 161, 168, 179, 180, 165, 172, 181, 182, 169, 176, 183, 184, 173];
-indices[18] = [173, 174, 175, 176, 185, 186, 187, 188, 189, 190, 191, 192, 193, 194, 195, 196];
-indices[19] = [176, 183, 184, 173, 188, 197, 198, 185, 192, 199, 200, 189, 196, 201, 202, 193];
-indices[20] = [203, 203, 203, 203, 206, 207, 208, 209, 210, 210, 210, 210, 211, 212, 213, 214];
-indices[21] = [203, 203, 203, 203, 209, 216, 217, 218, 210, 210, 210, 210, 214, 219, 220, 221];
-indices[22] = [203, 203, 203, 203, 218, 223, 224, 225, 210, 210, 210, 210, 221, 226, 227, 228];
-indices[23] = [203, 203, 203, 203, 225, 229, 230, 206, 210, 210, 210, 210, 228, 231, 232, 211];
-indices[24] = [211, 212, 213, 214, 233, 234, 235, 236, 237, 238, 239, 240, 241, 242, 243, 244];
-indices[25] = [214, 219, 220, 221, 236, 245, 246, 247, 240, 248, 249, 250, 244, 251, 252, 253];
-indices[26] = [221, 226, 227, 228, 247, 254, 255, 256, 250, 257, 258, 259, 253, 260, 261, 262];
-indices[27] = [228, 231, 232, 211, 256, 263, 264, 233, 259, 265, 266, 237, 262, 267, 268, 241];
-indices[28] = [269, 269, 269, 269, 278, 279, 280, 281, 274, 275, 276, 277, 270, 271, 272, 273];
-indices[29] = [269, 269, 269, 269, 281, 288, 289, 290, 277, 285, 286, 287, 273, 282, 283, 284];
-indices[30] = [269, 269, 269, 269, 290, 297, 298, 299, 287, 294, 295, 296, 284, 291, 292, 293];
-indices[31] = [269, 269, 269, 269, 299, 304, 305, 278, 296, 302, 303, 274, 293, 300, 301, 270];
+INDICES[0] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
+INDICES[1] = [3, 16, 17, 18, 7, 19, 20, 21, 11, 22, 23, 24, 15, 25, 26, 27];
+INDICES[2] = [18, 28, 29, 30, 21, 31, 32, 33, 24, 34, 35, 36, 27, 37, 38, 39];
+INDICES[3] = [30, 40, 41, 0, 33, 42, 43, 4, 36, 44, 45, 8, 39, 46, 47, 12];
+INDICES[4] = [12, 13, 14, 15, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59];
+INDICES[5] = [15, 25, 26, 27, 51, 60, 61, 62, 55, 63, 64, 65, 59, 66, 67, 68];
+INDICES[6] = [27, 37, 38, 39, 62, 69, 70, 71, 65, 72, 73, 74, 68, 75, 76, 77];
+INDICES[7] = [39, 46, 47, 12, 71, 78, 79, 48, 74, 80, 81, 52, 77, 82, 83, 56];
+INDICES[8] = [56, 57, 58, 59, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95];
+INDICES[9] = [59, 66, 67, 68, 87, 96, 97, 98, 91, 99, 100, 101, 95, 102, 103, 104];
+INDICES[10] = [68, 75, 76, 77, 98, 105, 106, 107, 101, 108, 109, 110, 104, 111, 112, 113];
+INDICES[11] = [77, 82, 83, 56, 107, 114, 115, 84, 110, 116, 117, 88, 113, 118, 119, 92];
+INDICES[12] = [120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135];
+INDICES[13] = [123, 136, 137, 120, 127, 138, 139, 124, 131, 140, 141, 128, 135, 142, 143, 132];
+INDICES[14] = [132, 133, 134, 135, 144, 145, 146, 147, 148, 149, 150, 151, 68, 152, 153, 154];
+INDICES[15] = [135, 142, 143, 132, 147, 155, 156, 144, 151, 157, 158, 148, 154, 159, 160, 68];
+INDICES[16] = [161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176];
+INDICES[17] = [164, 177, 178, 161, 168, 179, 180, 165, 172, 181, 182, 169, 176, 183, 184, 173];
+INDICES[18] = [173, 174, 175, 176, 185, 186, 187, 188, 189, 190, 191, 192, 193, 194, 195, 196];
+INDICES[19] = [176, 183, 184, 173, 188, 197, 198, 185, 192, 199, 200, 189, 196, 201, 202, 193];
+INDICES[20] = [203, 203, 203, 203, 206, 207, 208, 209, 210, 210, 210, 210, 211, 212, 213, 214];
+INDICES[21] = [203, 203, 203, 203, 209, 216, 217, 218, 210, 210, 210, 210, 214, 219, 220, 221];
+INDICES[22] = [203, 203, 203, 203, 218, 223, 224, 225, 210, 210, 210, 210, 221, 226, 227, 228];
+INDICES[23] = [203, 203, 203, 203, 225, 229, 230, 206, 210, 210, 210, 210, 228, 231, 232, 211];
+INDICES[24] = [211, 212, 213, 214, 233, 234, 235, 236, 237, 238, 239, 240, 241, 242, 243, 244];
+INDICES[25] = [214, 219, 220, 221, 236, 245, 246, 247, 240, 248, 249, 250, 244, 251, 252, 253];
+INDICES[26] = [221, 226, 227, 228, 247, 254, 255, 256, 250, 257, 258, 259, 253, 260, 261, 262];
+INDICES[27] = [228, 231, 232, 211, 256, 263, 264, 233, 259, 265, 266, 237, 262, 267, 268, 241];
+INDICES[28] = [269, 269, 269, 269, 278, 279, 280, 281, 274, 275, 276, 277, 270, 271, 272, 273];
+INDICES[29] = [269, 269, 269, 269, 281, 288, 289, 290, 277, 285, 286, 287, 273, 282, 283, 284];
+INDICES[30] = [269, 269, 269, 269, 290, 297, 298, 299, 287, 294, 295, 296, 284, 291, 292, 293];
+INDICES[31] = [269, 269, 269, 269, 299, 304, 305, 278, 296, 302, 303, 274, 293, 300, 301, 270];
 
 /**
  * 两个点之间插值
@@ -410,7 +411,7 @@ const transpose = (mat: Array<Array<Array<number>>>) => {
  * @param points  4 * 4 个点
  * @param divideTimes
  */
-export const dividepatch = (points: Array<Array<Array<number>>>, divideTimes: number): number[][] => {
+export const dividepatch = (points: Array<Array<Array<number>>>, divideTimes: number): { vertexs: number[][]; normals: number[][] } => {
   if (divideTimes <= 0) {
     return drawPatch(points);
   }
@@ -425,10 +426,14 @@ export const dividepatch = (points: Array<Array<Array<number>>>, divideTimes: nu
   const leftBottom = leftVDivideLines.map(lines => lines[1]);
   const rightTop = rightVDivideLines.map(lines => lines[0]);
   const rightBottom = rightVDivideLines.map(lines => lines[1]);
-  return dividepatch(leftTop, divideTimes - 1)
-    .concat(dividepatch(leftBottom, divideTimes - 1))
-    .concat(dividepatch(rightTop, divideTimes - 1))
-    .concat(dividepatch(rightBottom, divideTimes - 1));
+
+  const leftTopResult = dividepatch(leftTop, divideTimes - 1);
+  const leftBottomResult = dividepatch(leftBottom, divideTimes - 1);
+  const rightTopResult = dividepatch(rightTop, divideTimes - 1);
+  const rightBottomResult = dividepatch(rightBottom, divideTimes - 1);
+  const vertexs = [...leftTopResult.vertexs, ...leftBottomResult.vertexs, ...rightTopResult.vertexs, ...rightBottomResult.vertexs];
+  const normals = [...leftTopResult.normals, ...leftBottomResult.normals, ...rightTopResult.normals, ...rightBottomResult.normals];
+  return { vertexs, normals };
 };
 
 /**
@@ -437,36 +442,63 @@ export const dividepatch = (points: Array<Array<Array<number>>>, divideTimes: nu
  * @returns
  */
 const drawPatch = (points: Array<Array<Array<number>>>) => {
-  const arr: number[][] = [];
-  arr.push(points[0][0]);
-  arr.push(points[0][3]);
-  arr.push(points[3][3]);
-  arr.push(points[0][0]);
-  arr.push(points[3][3]);
-  arr.push(points[3][0]);
-  return arr;
+  const vertexs: number[][] = [];
+
+  vertexs.push(points[0][0]);
+  vertexs.push(points[0][3]);
+  vertexs.push(points[3][3]);
+  const n1 = getVertexNormal([points[0][0], points[0][3], points[3][3]]);
+
+  vertexs.push(points[0][0]);
+  vertexs.push(points[3][3]);
+  vertexs.push(points[3][0]);
+  const n2 = getVertexNormal([points[0][0], points[3][3], points[3][0]]);
+
+  return {
+    vertexs,
+    normals: [n1, n1, n1, n2, n2, n2],
+  };
+};
+
+// 获取三角形的法向量
+const getVertexNormal = (points: number[][]) => {
+  const [p1, p2, p3] = points;
+  const v1 = vec3.create();
+  const v2 = vec3.create();
+  const n = vec3.create();
+  vec3.subtract(vec3.create(p1), vec3.create(p3), v1);
+  vec3.subtract(vec3.create(p2), vec3.create(p3), v2);
+  vec3.cross(v1, v2, n);
+  vec3.normalize(n, n);
+  return [...n];
 };
 
 export const getPointsByDivide = (divideTimes: number) => {
   let points: number[][] = [];
+  let ns: number[][] = [];
   for (let i = 0; i < numTeapotPatches; i++) {
     const surfacePoints: number[][][] = new Array(4);
 
-    indices[i].map((indice, index) => {
+    INDICES[i].map((indice, index) => {
       const rowK = ~~(index / 4);
       if (!surfacePoints[rowK]) surfacePoints[rowK] = new Array(4);
-      surfacePoints[rowK][index % 4] = [vertexs[indice][0], vertexs[indice][2], vertexs[indice][1]];
+      surfacePoints[rowK][index % 4] = [VERTEXS[indice][0], VERTEXS[indice][2], VERTEXS[indice][1]];
     });
 
-    points = points.concat(dividepatch(surfacePoints, divideTimes));
+    const res = dividepatch(surfacePoints, divideTimes);
+    points = points.concat(res.vertexs);
+    ns = points.concat(res.normals);
   }
 
-  const result: number[] = [];
+  const vertexs: number[] = [];
+  const normals: number[] = [];
 
   points.map(point => {
-    point.map(cor => result.push(cor));
+    point.map(cor => vertexs.push(cor));
   });
 
-  console.log(result);
-  return result;
+  ns.map(n => {
+    n.map(cor => normals.push(cor));
+  });
+  return { vertexs, normals };
 };

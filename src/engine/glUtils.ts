@@ -186,7 +186,9 @@ export class VertexBufferObject extends BufferObject {
   }
 
   drawTriangles() {
-    this.gl.drawArrays(this.gl.LINE_LOOP, 0, this.length / 3);
+    for (let i = 0; i < this.length; i = i + 3) {
+      this.gl.drawArrays(this.gl.TRIANGLES, i, 3);
+    }
   }
 }
 
